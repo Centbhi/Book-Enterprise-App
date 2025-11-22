@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { BookApi, Book } from '../book-api';
 import { FormsModule } from '@angular/forms';
 import { BookCard } from "../book-card/book-card";
@@ -11,22 +11,9 @@ import { AdminCard } from "../book-card/admin-card";
   styleUrl: './booklist.css'
 })
 
-export class AdminBookList implements OnInit{
-  books: Book[] = [];
+export class AdminBookList{
+  @Input() books: Book[] = [];
   constructor (private api:BookApi) {}
-
-  ngOnInit(): void {
-    this.api.getBooks().subscribe({
-      next: (data) => {
-        console.log(data);
-        this.books = data;
-        this.books.forEach(book => 
-          book['isEditing'] = false
-        );
-      },
-      error: (err) => console.error('API Error', err)
-    });
-  }
 
   updateBook(book: Book): void{
     this.api.updateBook(book.id!, book).subscribe({

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { BookApi, Book } from '../book-api';
+import { Component, Input} from '@angular/core';
+import { Book } from '../book-api';
 import { BookCard } from '../book-card/book-card'
 
 @Component({
@@ -9,17 +9,6 @@ import { BookCard } from '../book-card/book-card'
   styleUrl: './booklist.css'
 })
 
-export class UserBookList implements OnInit{
-  books: Book[] = [];
-  constructor (private api:BookApi) {}
-
-  ngOnInit(): void {
-    this.api.getBooks().subscribe({
-      next: (data) => {
-        this.books = data;
-      },
-      error: (err) => console.error('API Error', err)
-    });
-  }
-
+export class UserBookList{
+  @Input() books: Book[] = [];
 }

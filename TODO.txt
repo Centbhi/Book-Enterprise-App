@@ -1,5 +1,1 @@
-Turn BookList into a template
-Genre Search
-Genre -> List<Genre>
 Add Genre Btn
-Login has an issue for sure

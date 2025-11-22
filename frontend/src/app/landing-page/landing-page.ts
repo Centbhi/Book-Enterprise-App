@@ -1,30 +1,30 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UserBookList } from '../book-list/user-booklist';
-import { AdminBookList } from '../book-list/admin-booklist';
 import { BooklistLayout } from '../list-container/list-container';
-import { Router } from '@angular/router';
-import { UserApi } from '../user-api';
+import { Book, BookApi } from '../book-api';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [FormsModule, UserBookList, AdminBookList, BooklistLayout],
+  imports: [FormsModule, BooklistLayout],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.css'
 })
 
 export class BookList implements OnInit{
-  constructor (private api:UserApi,private router:Router) {}
+  books:Book[] = [];
+  constructor (private bookApi:BookApi) {}
   
   ngOnInit(): void {
-    if(!this.api.getCurrUser()){
-      alert('You must be logged in to view this page');
-      this.router.navigate(['/login']);
-    }
-  }
-  
-  get user(){
-    return this.api.getCurrUser();
+    this.bookApi.getBooks().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.books = data;
+        this.books.forEach(book => 
+          book['isEditing'] = false
+        );
+      },
+      error: (err) => console.error('API Error', err)
+    });
   }
 
 }

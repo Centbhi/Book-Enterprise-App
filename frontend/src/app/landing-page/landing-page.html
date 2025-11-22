@@ -6,17 +6,10 @@
 </div>
 
 <app--list-container
+    [books]="books"
     sectionTitle = "Featured Books"
     sectionText = "Welcome to The Evening Pages, where every story unfolds like the gentle transition from day to night. 
     Here, narratives breathe with life, characters dance in the amber light, and imagination knows no bounds. 
     Explore our curated collection of tales that warm the heart and ignites the mind.">
 
-    <div section-body>
-        @if (user?.admin) {
-            <admin-booklist></admin-booklist>
-        }
-        @else {
-            <user-booklist></user-booklist>
-        }
-    </div>
 </app--list-container>
