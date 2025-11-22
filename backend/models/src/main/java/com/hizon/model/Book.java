@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class Book {
-    private int id;
+    private Integer id;
     private String title;
     private List<String> genre;
     private String status;

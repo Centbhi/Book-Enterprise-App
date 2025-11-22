@@ -33,8 +33,4 @@ public class BookData{
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     Date lastUpdated;
-
-    @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    Date inStockSince;
 }
