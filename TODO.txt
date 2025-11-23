@@ -1,1 +1,9 @@
-Add Genre Btn
+Genre Buttons 
+Genre Source of Truth
+Checkout
+Cart
+Association of User & Books in Cart  
+    Order Model
+        Integer id
+        User user
+        List<Book> Cart (HashMap? for storing how much per book?)

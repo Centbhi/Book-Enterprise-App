@@ -34,6 +34,7 @@ public class BookServiceImpl extends GenericServiceImpl<BookData, Book> implemen
             new RuntimeException(BookData.class.getSimpleName() + " not found with id: " + id));
         
         entity.getGenre().clear(); 
+        //[DRAMA,FANTASY] -> [FANTASY] would instead become [FANTASY,FANTASY]
         
         mapper.map(model, entity);
         BookData saved = repo.save(entity);
