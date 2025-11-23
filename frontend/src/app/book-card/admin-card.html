@@ -21,11 +21,11 @@
         <input [(ngModel)]="book.author" name="author" />
         </p>
 
-        <p><strong>Genre: </strong>
+        <p><strong>Genre: </strong><br>
         <select multiple [(ngModel)]="book.genre" name="genre">
-            <option value="Romance">Romance</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Drama">Drama</option>
+            @for(genre of genreService.genres; track genre){
+                <option [ngValue]="genre">{{genre}}</option>
+            }
         </select>
         </p>
 

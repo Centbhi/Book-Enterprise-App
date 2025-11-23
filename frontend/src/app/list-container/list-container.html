@@ -5,7 +5,9 @@
   </div>
   <div class="section-body">
     <p>{{sectionText}}</p>
-    <button class = "btn-secondary" (click)="switchAdmin()">Admin Switch Tester</button>
+    <ng-content select=".actions"></ng-content>
+    <button (click)="switchAdmin()">Admin Switch Tester</button>
+    <br><br>
       @if (user?.admin) {
           <admin-booklist [books]="books"></admin-booklist>
       }

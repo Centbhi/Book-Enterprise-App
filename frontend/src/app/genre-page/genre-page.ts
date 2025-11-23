@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BooklistLayout } from "../list-container/list-container";
 import { Book, BookApi } from '../book-api';
+import { GenreService } from '../genre-service';
 
 @Component({
   selector: 'app-genre-page',
@@ -10,10 +11,14 @@ import { Book, BookApi } from '../book-api';
 })
 export class GenrePage {
   books:Book[] =[]
-  constructor (private bookApi:BookApi) {}
+  constructor (private bookApi:BookApi, public genreService:GenreService) {}
 
   ngOnInit(): void {
-    this.bookApi.getByGenre("Romance").subscribe({
+    this.findBook("ROMANCE")
+  }
+
+  findBook(genre:string): void{
+    this.bookApi.getByGenre(genre).subscribe({
       next: (data) => {this.books = data;},
       error: (err) => console.error('API Error', err)
     });
