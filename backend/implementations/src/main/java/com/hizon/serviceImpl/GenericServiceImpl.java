@@ -12,26 +12,26 @@ public abstract class GenericServiceImpl<ModelData,Model> implements GenericServ
     private final JpaRepository<ModelData, Integer> repo;
     private final ModelMapper mapper;
     private final Class<ModelData> modelDataClass;
-    private final Class<Model> Book;
+    private final Class<Model> modelClass;
 
     @Override
     public Model create(Model model){
         ModelData entity = mapper.map(model, modelDataClass);
         ModelData saved = repo.save(entity);
-        return mapper.map(saved,Book);
+        return mapper.map(saved,modelClass);
     }
 
     @Override
     public Model read(Integer id){
         ModelData entity = repo.findById(id)
         .orElseThrow(() -> new RuntimeException(modelDataClass.getSimpleName() + "not found with id: " + id));
-        return mapper.map(entity, Book);
+        return mapper.map(entity, modelClass);
     }
 
     @Override
     public List<Model> readAll(){
         return repo.findAll().stream()
-            .map(entity -> mapper.map(entity, Book))
+            .map(entity -> mapper.map(entity, modelClass))
             .collect(Collectors.toList());
     }
 
@@ -42,7 +42,7 @@ public abstract class GenericServiceImpl<ModelData,Model> implements GenericServ
             new RuntimeException(modelDataClass.getSimpleName() + " not found with id: " + id));
         mapper.map(model,entity);
         ModelData saved = repo.save(entity);
-        return mapper.map(saved,Book);
+        return mapper.map(saved,modelClass);
     }
 
     @Override
