@@ -27,4 +27,16 @@ public class BookServiceImpl extends GenericServiceImpl<BookData, Book> implemen
             .map(bookData -> mapper.map(bookData, Book.class))
             .collect(Collectors.toList());
     }
+
+    @Override
+    public Book update(int id, Book model) {
+        BookData entity = repo.findById(id).orElseThrow(() ->
+            new RuntimeException(BookData.class.getSimpleName() + " not found with id: " + id));
+        
+        entity.getGenre().clear(); 
+        
+        mapper.map(model, entity);
+        BookData saved = repo.save(entity);
+        return mapper.map(saved, Book.class);
+    }
 }
