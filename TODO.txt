@@ -1,3 +1,6 @@
+Make genre an enum in backend instead of being in frontend service
+
+Same issue that happened to Genre will happen in Order, must override CU (CU for calculating totalCost, U for aforementioned bug)
 Checkout
 Cart
 Association of User & Books in Cart  
