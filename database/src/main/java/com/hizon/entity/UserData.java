@@ -23,8 +23,6 @@ public class UserData {
     String password;
     boolean admin;
     
-    // List<BookData> books;
-
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     Date lastUpdated;

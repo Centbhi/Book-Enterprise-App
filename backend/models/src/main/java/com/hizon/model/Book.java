@@ -9,7 +9,6 @@ public class Book {
     private String title;
     private List<String> genre;
     private String status;
-    private String datePublished;
     private String author;
     private String publisher;
     private String description;

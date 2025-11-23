@@ -20,7 +20,6 @@ public class BookData{
     List<String> genre; 
 
     String status;
-    String datePublished;
     String author;
     String publisher;
     String description;
