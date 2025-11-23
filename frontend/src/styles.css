@@ -4,6 +4,10 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 20px;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  letter-spacing: 1px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(255, 222, 125, 0.3);
 }
 
 button:hover {
