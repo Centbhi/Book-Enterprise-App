@@ -13,5 +13,5 @@ public class Order {
     private String status;
     private Boolean isFulfilled;
     private LocalDateTime orderDate;
-    private LocalDateTime orderFulfilledDate;
+    private LocalDateTime fulfilledDate;
 }

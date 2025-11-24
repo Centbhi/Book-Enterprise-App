@@ -1,4 +1,3 @@
-Make genre an enum in backend instead of being in frontend service
 
 Same issue that happened to Genre will happen in Order, must override CU (CU for calculating totalCost, U for aforementioned bug)
 Checkout
@@ -12,4 +11,7 @@ Association of User & Books in Cart
         Boolean isOrdered
         Boolean isFulfilled
         LocalDateTime orderDate
-        
+        LocalDateTime dateFulfilled
+
+Make orderDate null when sending update
+Make genre an enum in backend instead of being in frontend service

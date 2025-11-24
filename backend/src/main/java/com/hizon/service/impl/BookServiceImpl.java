@@ -1,4 +1,4 @@
-package com.hizon.serviceImpl;
+package com.hizon.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +31,7 @@ public class BookServiceImpl extends GenericServiceImpl<BookData, Book> implemen
     @Override
     public Book update(int id, Book model) {
         BookData entity = repo.findById(id).orElseThrow(() ->
-            new RuntimeException(BookData.class.getSimpleName() + " not found with id: " + id));
+            new RuntimeException(BookData.class+ " not found with id: " + id));
         
         entity.getGenre().clear(); 
         //[DRAMA,FANTASY] -> [FANTASY] would instead become [FANTASY,FANTASY]

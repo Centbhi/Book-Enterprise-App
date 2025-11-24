@@ -1,4 +1,4 @@
-package com.hizon.serviceImpl;
+package com.hizon.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

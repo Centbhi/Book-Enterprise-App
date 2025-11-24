@@ -2,6 +2,7 @@ package com.hizon.controllers;
 
 import com.hizon.model.User;
 import com.hizon.service.UserService;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

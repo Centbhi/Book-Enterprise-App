@@ -1,9 +1,11 @@
-package com.hizon.serviceImpl;
+package com.hizon.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.hizon.service.GenericService;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

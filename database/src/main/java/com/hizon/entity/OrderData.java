@@ -35,5 +35,5 @@ public class OrderData{
     private LocalDateTime orderDate = LocalDateTime.now();
 
     @Column(name = "fulfilled_date")
-    private LocalDateTime orderFulfilledDate;
+    private LocalDateTime fulfilledDate;
 }

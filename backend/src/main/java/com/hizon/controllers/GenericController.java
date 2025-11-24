@@ -1,7 +1,10 @@
 package com.hizon.controllers;
 import java.util.List;
-import com.hizon.service.GenericService;
+
 import org.springframework.web.bind.annotation.*;
+
+import com.hizon.service.GenericService;
+
 import org.springframework.http.ResponseEntity;
 
 @RestController
