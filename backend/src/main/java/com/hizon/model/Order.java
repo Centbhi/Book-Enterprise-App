@@ -8,8 +8,8 @@ import java.util.Map;
 public class Order {
     private Integer id;
     private Integer userId;
-    private Map<Integer, Integer> books; // key = bookId, value = quantity
-    private double totalCost;
+    private Map<Book, Integer> books; //value = quantity
+    private Double totalCost;
     private String status;
     private Boolean isFulfilled;
     private LocalDateTime orderDate;

@@ -27,7 +27,7 @@ public class OrderData{
     @Column(name = "quantity")
     private Map<BookData,Integer> books = new HashMap<>();
     
-    private double totalCost;
+    private Double totalCost;
     private String status;
     private Boolean isFulfilled = false;
 
