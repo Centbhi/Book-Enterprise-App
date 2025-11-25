@@ -13,7 +13,7 @@ interface OrderItem{
 export interface Order{
   id: number,
   userId: number,
-  book
+  // book
   totalCost: number,
   status: string,
   isFulfilled: boolean,

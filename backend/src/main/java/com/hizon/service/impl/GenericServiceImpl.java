@@ -26,7 +26,7 @@ public abstract class GenericServiceImpl<ModelData,Model> implements GenericServ
     @Override
     public Model read(Integer id){
         ModelData entity = repo.findById(id)
-        .orElseThrow(() -> new RuntimeException(modelDataClass.getSimpleName() + "not found with id: " + id));
+            .orElseThrow(() -> new RuntimeException(modelDataClass.getSimpleName() + "not found with id: " + id));
         return mapper.map(entity, modelClass);
     }
 
@@ -39,7 +39,6 @@ public abstract class GenericServiceImpl<ModelData,Model> implements GenericServ
 
     @Override
     public Model update(int id,Model model){
-
         ModelData entity = repo.findById(id).orElseThrow(()->
             new RuntimeException(modelDataClass.getSimpleName() + " not found with id: " + id));
         mapper.map(model,entity);

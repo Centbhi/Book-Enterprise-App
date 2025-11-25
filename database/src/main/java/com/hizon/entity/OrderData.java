@@ -2,8 +2,8 @@ package com.hizon.entity;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.persistence.*;
 
 @Data
@@ -18,18 +18,11 @@ public class OrderData{
     @JoinColumn(name = "user_id")
     private UserData user;
 
-    @ElementCollection
-    @CollectionTable(
-        name = "order_books",
-        joinColumns = @JoinColumn(name = "order_id")
-    )
-    @MapKeyJoinColumn(name = "book.id")
-    @Column(name = "quantity")
-    private Map<BookData,Integer> books = new HashMap<>();
-    
-    private Double totalCost;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItemData> orders = new ArrayList<>();
+
     private String status;
-    private Boolean isFulfilled = false;
+    private Double totalCost;
 
     @Column(name = "order_date", nullable = false, updatable = false)
     private LocalDateTime orderDate = LocalDateTime.now();
