@@ -1,35 +1,61 @@
 import { Injectable } from '@angular/core';
-import { Book } from './book-api';
-
-@Injectable({
-  providedIn: 'root',
-})
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
 
 interface OrderItem{
-  book : Book,
+  Order : Order,
   quantity : number
 }
 
 export interface Order{
   id: number,
   userId: number,
-  // book
-  totalCost: number,
+  order: OrderItem[],
   status: string,
-  isFulfilled: boolean,
-  orderDate: Date,
-  fulfilledDate: Date,
-    // private Integer id;
-    // private Integer userId;
-    // private Map<Book, Integer> books; //value = quantity
-    // private Double totalCost;
-    // private String status;
-    // private Boolean isFulfilled;
-    // private LocalDateTime orderDate;
-    // private LocalDateTime fulfilledDate;
 
+  totalCost: number,
+  orderDate: string,
+  fulfilledDate: string
 }
 
+@Injectable({
+  providedIn: 'root',
+})
+
 export class OrderApi {
+  private readonly baseUrl = "/api/order"
+  constructor(private http: HttpClient){}
+
+  getOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(this.baseUrl);
+  }
+
+  getOrder(id: number): Observable<Order> {
+    return this.http.get<Order>(`${this.baseUrl}/${id}`);
+  }
+
+  createOrder(Order: Order): Observable<Order> {
+    return this.http.post<Order>(this.baseUrl, Order);
+  }
+
+  updateOrder(id: number, Order: Order): Observable<Order> {
+    return this.http.put<Order>(`${this.baseUrl}/${id}`, Order);
+  }
+
+  deleteOrder(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
+  getByUser(userId: number): Observable<Order[]>{
+    return this.http.get<Order[]>(`${this.baseUrl}/user/${userId}`);
+  }
+
+  getByStatus(status: string): Observable<Order[]>{
+    return this.http.get<Order[]>(`${this.baseUrl}/status/${status}`);
+  }
+
+  getStatusList(): Observable<string[]>{
+    return this.http.get<string[]>(`${this.baseUrl}/status/list`);
+  }
   
 }
