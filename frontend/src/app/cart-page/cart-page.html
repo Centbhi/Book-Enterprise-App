@@ -1,95 +1,58 @@
+
 <div class="checkout-container">
   <div class="checkout-card">
     <div class="checkout-header">
       <h2 class="checkout-title">Order Summary</h2>
       <div class="divider"></div>
     </div>
+    @for (order of orders; track order.id) {
+        <div class="order-info">
+          <p><strong>Order ID: </strong> {{order.id}}</p>
+          <p><strong>Ordered on: </strong>{{ order.orderDate | date:'MMM d, y • hh:mm a' }} </p>
+          <p><strong>Status: </strong> <span class="status-badge status-pending">{{order.status}}</span></p>
+          <p>
+            <strong>Fulfilled by: </strong>
+            {{ order.fulfilledDate ? (order.fulfilledDate | date:'MMM d, y • hh:mm a') : 'Not yet fulfilled' }}
+          </p>
+        </div>
 
-    <div class="order-info">
-      <p><strong>Order ID:</strong> #12345</p>
-      <p><strong>Status:</strong> <span class="status-badge status-pending">PENDING</span></p>
-      <p><strong>Order Date:</strong> Nov 25, 2024, 3:45 PM</p>
-    </div>
+        <div class="order-items">
+          <h3 class="items-title">Items in Order</h3>
+          
+          <ul class="items-list">
+            <li class="order-item">
+            @for (item of order.orders; track $index) {
+              <div class="item-image">
+                <img [src]= "'assets/bookCovers/'+item.book.coverImgUrl" alt="book"/>
+              </div>
+              
+              <div class="item-details">
+                <h4 class="item-title">{{item.book.title}}</h4>
+                <p class="item-author">by {{item.book.author}}</p>
+                <p class="item-price">₱{{item.book.price}} x {{item.quantity}}</p>
+              </div>
+              
+              <div class="item-total">
+                <p class="total-label">Subtotal</p>
+                <p class="total-amount">₱{{item.book.price * item.quantity}}</p>
+              </div>
+            }
+            </li>
+          </ul>
+            <div class="summary-row total-row">
+              <span>Grand Total:</span>
+              <span>₱{{order.totalCost}}</span>
+            </div>
+        </div>
 
-    <div class="order-items">
-      <h3 class="items-title">Items in Order</h3>
-      
-      <ul class="items-list">
-        <li class="order-item">
-          <div class="item-image">
-            <img src="assets/bookCovers/sample1.jpg" alt="Book 1"/>
-          </div>
-          
-          <div class="item-details">
-            <h4 class="item-title">The Midnight Library</h4>
-            <p class="item-author">by Matt Haig</p>
-            <p class="item-price">₱450.00 × 2</p>
-          </div>
-          
-          <div class="item-total">
-            <p class="total-label">Subtotal</p>
-            <p class="total-amount">₱900.00</p>
-          </div>
-        </li>
-
-        <li class="order-item">
-          <div class="item-image">
-            <img src="assets/bookCovers/sample2.jpg" alt="Book 2"/>
-          </div>
-          
-          <div class="item-details">
-            <h4 class="item-title">Where the Crawdads Sing</h4>
-            <p class="item-author">by Delia Owens</p>
-            <p class="item-price">₱520.00 × 1</p>
-          </div>
-          
-          <div class="item-total">
-            <p class="total-label">Subtotal</p>
-            <p class="total-amount">₱520.00</p>
-          </div>
-        </li>
-
-        <li class="order-item">
-          <div class="item-image">
-            <img src="assets/bookCovers/sample3.jpg" alt="Book 3"/>
-          </div>
-          
-          <div class="item-details">
-            <h4 class="item-title">The Seven Husbands of Evelyn Hugo</h4>
-            <p class="item-author">by Taylor Jenkins Reid</p>
-            <p class="item-price">₱480.00 × 1</p>
-          </div>
-          
-          <div class="item-total">
-            <p class="total-label">Subtotal</p>
-            <p class="total-amount">₱480.00</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="order-summary">
-      <div class="summary-row">
-        <span>Items Total:</span>
-        <span>₱1,900.00</span>
-      </div>
-      <div class="summary-row">
-        <span>Shipping:</span>
-        <span>₱50.00</span>
-      </div>
-      <div class="summary-row total-row">
-        <span>Grand Total:</span>
-        <span>₱1,950.00</span>
-      </div>
-    </div>
-
-    <div class="checkout-actions">
-      <button class="btn-primary">
-        Confirm Order
-      </button>
-      <button class="btn-secondary">
-        Cancel Order
-      </button>
-    </div>
+        <div class="checkout-actions">
+          <button class="btn-primary">
+            Confirm Order
+          </button>
+          <button class="btn-secondary">
+            Cancel Order
+          </button>
+        </div>
+    }
   </div>
 </div>

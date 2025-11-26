@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
+import { Book } from './book-api';
 
 interface OrderItem{
-  Order : Order,
+  book: Book,
   quantity : number
 }
 
 export interface Order{
   id: number,
   userId: number,
-  order: OrderItem[],
+  orders: OrderItem[],
   status: string,
 
   totalCost: number,
