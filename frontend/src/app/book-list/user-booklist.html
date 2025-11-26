@@ -2,10 +2,23 @@
   @for (book of books; track book.id) {
     <app-book-card [book]="book">
       <div class="book-actions">
-        <button>BUY</button>
+        <button (click)="openPopup(book,'buy')">BUY</button>
         <button>ADD TO CART</button>
         <button>REMOVE</button>
       </div>
     </app-book-card>
   }
 </ul>
+
+@if (selectedBook) {
+  
+  <div class="popup-backdrop" #popupRef>
+    <div class="popup">
+      <app-book-card [book]="selectedBook">
+      </app-book-card>
+
+      <button (click)="closePopup()">Cancel</button>
+      <button (click)="closePopup()">Confirm</button>
+    </div>
+  </div>
+}

@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, ElementRef, Input, ViewChild} from '@angular/core';
 import { Book } from '../api/book-api';
 import { BookCard } from '../book-card/book-card'
 
@@ -10,5 +10,22 @@ import { BookCard } from '../book-card/book-card'
 })
 
 export class UserBookList{
+  @ViewChild('popupRef') popupElement!: ElementRef
   @Input() books: Book[] = [];
+  selectedBook: Book | null = null
+  popupAction = ''
+
+  openPopup(book: Book, action: string) {
+    this.selectedBook = book
+    this.popupAction = action
+
+    setTimeout(() => {
+      this.popupElement?.nativeElement.scrollIntoView({ behavior: 'smooth' })
+    })
+  }
+
+  closePopup() {
+    this.selectedBook = null
+    this.popupAction = ''
+  }
 }

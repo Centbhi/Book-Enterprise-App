@@ -1,6 +1,6 @@
-<li class="book-card">
+<div class="book-card">
     <div class="book-cover">
-        <img [src]= "'assets/bookCovers/'+book.coverImgUrl"/>
+        <img [src]= "'assets/bookCovers/'+book.coverImgUrl" [alt]="book.coverImgUrl"/>
     </div>
 
     <form class="book-details" (ngSubmit)="updateBook()">
@@ -57,4 +57,4 @@
         <ng-content></ng-content>
     </div>
 
-</li>
+</div>
