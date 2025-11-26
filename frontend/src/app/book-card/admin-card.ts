@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from '../api/book-api';
 import { FormsModule } from '@angular/forms';
-import { GenreService } from '../genre-service';
+import { GenreService } from '../api/genre-service';
 
 @Component({
   selector: 'app-admin-card',
