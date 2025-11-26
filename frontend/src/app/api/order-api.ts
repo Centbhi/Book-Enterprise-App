@@ -20,12 +20,20 @@ export interface Order{
 }
 
 @Injectable({
+  providedIn: 'root'
+})
+
+export class GenreService{
+  genres = ['ROMANCE','FANTASY','DRAMA']
+}
+
+@Injectable({
   providedIn: 'root',
 })
 
 export class OrderApi {
   private readonly baseUrl = "/api/order"
-  constructor(private http: HttpClient){}
+  constructor(private readonly http: HttpClient){}
 
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.baseUrl);

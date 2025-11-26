@@ -12,16 +12,16 @@ import { Book, BookApi } from '../api/book-api';
 
 export class BookList implements OnInit{
   books:Book[] = [];
-  constructor (private bookApi:BookApi) {}
+  constructor (private readonly bookApi:BookApi) {}
   
   ngOnInit(): void {
     this.bookApi.getBooks().subscribe({
       next: (data) => {
         console.log(data);
         this.books = data;
-        this.books.forEach(book => 
+        for(const book of this.books){
           book['isEditing'] = false
-        );
+        }
       },
       error: (err) => console.error('API Error', err)
     });

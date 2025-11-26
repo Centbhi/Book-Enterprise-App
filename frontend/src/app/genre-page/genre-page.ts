@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BooklistLayout } from "../list-container/list-container";
 import { Book, BookApi } from '../api/book-api';
-import { GenreService } from '../api/genre-service';
+import { GenreService } from '../api/order-api';
 
 @Component({
   selector: 'app-genre-page',
@@ -9,9 +9,9 @@ import { GenreService } from '../api/genre-service';
   templateUrl: './genre-page.html',
   styleUrl: './genre-page.css',
 })
-export class GenrePage {
+export class GenrePage implements OnInit{
   books:Book[] =[]
-  constructor (private bookApi:BookApi, public genreService:GenreService) {}
+  constructor (private readonly bookApi:BookApi, public genreService:GenreService) {}
 
   ngOnInit(): void {
     this.findBook("ROMANCE")

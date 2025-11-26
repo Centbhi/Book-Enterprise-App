@@ -1,7 +1,6 @@
 package com.hizon.entity;
 import lombok.Data;
 import java.util.Date;
-import java.util.List;
 
 import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.*;

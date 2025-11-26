@@ -13,7 +13,7 @@ import { AdminCard } from "../book-card/admin-card";
 
 export class AdminBookList{
   @Input() books: Book[] = [];
-  constructor (private api:BookApi) {}
+  constructor (private readonly api:BookApi) {}
 
   updateBook(book: Book): void{
     this.api.updateBook(book.id!, book).subscribe({

@@ -9,7 +9,7 @@ import { DatePipe } from '@angular/common';
   styleUrl: './cart-page.css',
 })
 export class CartPage implements OnInit{
-  constructor(private orderApi:OrderApi){};
+  constructor(private readonly orderApi:OrderApi){};
   orders: Order[] = [];
 
   ngOnInit() : void{

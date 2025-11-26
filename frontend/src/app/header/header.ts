@@ -10,10 +10,10 @@ import { UserApi } from '../api/user-api';
 })
 
 export class Header {
-constructor(private router:Router, private api:UserApi){}
+constructor(private readonly router:Router, private readonly api:UserApi){}
   confirmLogout(event: Event){
     event.preventDefault();
-    if(window.confirm('Are you sure you want to logout?')){
+    if(globalThis.confirm('Are you sure you want to logout?')){
       this.api.logout();
       this.router.navigate(['/login'])
     }
