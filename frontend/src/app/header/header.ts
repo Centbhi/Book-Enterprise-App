@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { UserApi } from '../user-api';
+import { UserApi } from '../api/user-api';
 
 @Component({
   selector: 'app-header',

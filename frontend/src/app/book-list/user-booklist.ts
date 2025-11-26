@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { Book } from '../book-api';
+import { Book } from '../api/book-api';
 import { BookCard } from '../book-card/book-card'
 
 @Component({

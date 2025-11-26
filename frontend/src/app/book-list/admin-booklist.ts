@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { BookApi, Book } from '../book-api';
+import { BookApi, Book } from '../api/book-api';
 import { FormsModule } from '@angular/forms';
 import { BookCard } from "../book-card/book-card";
 import { AdminCard } from "../book-card/admin-card";
@@ -57,6 +57,7 @@ export class AdminBookList{
       },
       error: (err) => console.log('Book Deletion Failure:', err)
     });
+  
   }
 
   editBook(book: Book): void{

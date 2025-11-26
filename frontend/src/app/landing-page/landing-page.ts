@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BooklistLayout } from '../list-container/list-container';
-import { Book, BookApi } from '../book-api';
+import { Book, BookApi } from '../api/book-api';
 
 @Component({
   selector: 'app-landing-page',

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Book } from '../book-api';
+import { Book } from '../api/book-api';
 import { FormsModule } from '@angular/forms';
 import { GenreService } from '../genre-service';
 

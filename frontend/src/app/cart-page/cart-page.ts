@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Order, OrderApi } from '../order-api';
+import { Order, OrderApi } from '../api/order-api';
 import { DatePipe } from '@angular/common';
 
 @Component({

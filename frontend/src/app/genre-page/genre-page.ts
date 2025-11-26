@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BooklistLayout } from "../list-container/list-container";
-import { Book, BookApi } from '../book-api';
+import { Book, BookApi } from '../api/book-api';
 import { GenreService } from '../genre-service';
 
 @Component({

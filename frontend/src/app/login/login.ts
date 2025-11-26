@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserApi, User} from '../user-api';
+import { UserApi, User} from '../api/user-api';
 
 @Component({
   selector: 'app-login',
