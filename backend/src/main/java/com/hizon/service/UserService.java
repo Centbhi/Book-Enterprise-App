@@ -1,7 +1,7 @@
 package com.hizon.service;
 
-import com.hizon.model.User;
+import com.hizon.model.UserDTO;
 
-public interface UserService extends GenericService<User>{
-    User findByName(String username);
+public interface UserService extends GenericService<UserDTO>{
+    UserDTO findByName(String username);
 }

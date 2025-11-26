@@ -14,9 +14,9 @@ import com.hizon.entity.OrderData;
 import com.hizon.entity.OrderItemData;
 import com.hizon.entity.OrderStatus;
 
-import com.hizon.model.Book;
+import com.hizon.model.BookDTO;
 import com.hizon.model.OrderDTO;
-import com.hizon.model.OrderItem;
+import com.hizon.model.OrderItemDTO;
 
 import com.hizon.repository.BookRepository;
 import com.hizon.repository.OrderRepository;
@@ -100,7 +100,7 @@ public class OrderServiceImpl extends GenericServiceImpl<OrderData, OrderDTO> im
     private OrderData mapToEntity(OrderDTO source, OrderData dest){
         dest.getOrders().clear();
 
-        for (OrderItem order : source.getOrders()) {
+        for (OrderItemDTO order : source.getOrders()) {
             BookData bookData = bookRepo.getReferenceById(order.getBook().getId());
             dest.getOrders().add(new OrderItemData(dest, bookData, order.getQuantity()));
         }
@@ -113,12 +113,12 @@ public class OrderServiceImpl extends GenericServiceImpl<OrderData, OrderDTO> im
 
     private OrderDTO mapToDTO(OrderData source){
         OrderDTO model = mapper.map(source, OrderDTO.class);
-        List<OrderItem> orderItem = new ArrayList<>();
+        List<OrderItemDTO> orderItem = new ArrayList<>();
 
         for (OrderItemData orderItemData : source.getOrders()) {
             orderItem.add(
-                new OrderItem(
-                    mapper.map(orderItemData.getBook(), Book.class), 
+                new OrderItemDTO(
+                    mapper.map(orderItemData.getBook(), BookDTO.class), 
                     orderItemData.getQuantity()
                 )
             );

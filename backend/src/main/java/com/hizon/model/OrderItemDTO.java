@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderItem {
-    private Book book;
+public class OrderItemDTO {
+    private BookDTO book;
     private Integer quantity;
 }

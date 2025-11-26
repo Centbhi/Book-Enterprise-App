@@ -5,31 +5,31 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.hizon.entity.UserData;
-import com.hizon.model.User;
+import com.hizon.model.UserDTO;
 import com.hizon.repository.UserRepository;
 import com.hizon.service.UserService;
 
 @Service
-public class UserServiceImpl extends GenericServiceImpl<UserData, User> implements UserService{
+public class UserServiceImpl extends GenericServiceImpl<UserData, UserDTO> implements UserService{
     private final UserRepository userRepository;
     private final ModelMapper mapper;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public UserServiceImpl(UserRepository repo, ModelMapper mapper){
-        super(repo,mapper,UserData.class,User.class);
+        super(repo,mapper,UserData.class,UserDTO.class);
         this.userRepository = repo;
         this.mapper = mapper;
     } 
 
     @Override
-    public User findByName (String username) {
+    public UserDTO findByName (String username) {
         UserData entity = userRepository.findByName(username)
             .orElseThrow(() -> new RuntimeException("User not found with name: " + username));
-        return mapper.map(entity, User.class);
+        return mapper.map(entity, UserDTO.class);
     }
 
     @Override
-    public User update(int id, User model){
+    public UserDTO update(int id, UserDTO model){
         UserData entity = userRepository.findById(id).orElseThrow(() ->
             new RuntimeException(UserData.class.getSimpleName() + " not found with id: " + id));
 
@@ -40,11 +40,11 @@ public class UserServiceImpl extends GenericServiceImpl<UserData, User> implemen
         }
 
         UserData saved = userRepository.save(entity);
-        return mapper.map(saved, User.class);
+        return mapper.map(saved, UserDTO.class);
     }
 
     @Override
-    public User create(User model){
+    public UserDTO create(UserDTO model){
         UserData entity = mapper.map(model, UserData.class);
 
             if (model.getPassword() != null && !model.getPassword().isEmpty()) {
@@ -54,6 +54,6 @@ public class UserServiceImpl extends GenericServiceImpl<UserData, User> implemen
         entity.setId(null);
 
         UserData saved = userRepository.save(entity);
-        return mapper.map(saved, User.class);
+        return mapper.map(saved, UserDTO.class);
     }
 }

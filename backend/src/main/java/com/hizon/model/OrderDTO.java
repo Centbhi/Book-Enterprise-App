@@ -11,7 +11,7 @@ public class OrderDTO {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Integer id;
     private Integer userId;
-    private List<OrderItem> orders;
+    private List<OrderItemDTO> orders;
     private String status;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)

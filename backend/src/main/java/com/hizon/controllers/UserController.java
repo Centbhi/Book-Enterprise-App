@@ -1,6 +1,6 @@
 package com.hizon.controllers;
 
-import com.hizon.model.User;
+import com.hizon.model.UserDTO;
 import com.hizon.service.UserService;
 
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @RestController
 @RequestMapping("/api/user")
-public class UserController extends GenericController<User>{
+public class UserController extends GenericController<UserDTO>{
     
     private final UserService service;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -26,7 +26,7 @@ public class UserController extends GenericController<User>{
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> body) {
-        User user = service.findByName(body.get("name"));
+        UserDTO user = service.findByName(body.get("name"));
         if(passwordEncoder.matches(body.get("password"), user.getPassword())){
             user.setPassword(null);
             return ResponseEntity.ok(user);

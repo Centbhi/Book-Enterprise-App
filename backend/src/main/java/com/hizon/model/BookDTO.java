@@ -4,7 +4,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class Book {
+public class BookDTO {
     private Integer id;
     private String title;
     private List<String> genre;
