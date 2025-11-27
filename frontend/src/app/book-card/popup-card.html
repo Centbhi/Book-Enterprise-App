@@ -1,0 +1,23 @@
+<div class="book-card-popup">
+    <div class="book-cover">
+        <img [src]="'assets/bookCovers/'+book.coverImgUrl" [alt]="book.coverImgUrl"/>
+    </div>
+
+    <div class="book-details">
+        <h3 class="book-title">{{ book.title }}</h3>
+
+        <p class="rating">
+            @if (book.rating !== undefined){
+                <span class="stars" [style.--rating]="book.rating"></span>
+                <span>({{ book.rating.toFixed(1) }})</span>
+            }
+        </p>
+
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p><strong>Genre:</strong> {{ book.genre }}</p>
+        <p><strong>Publisher:</strong> {{ book.publisher }}</p>
+        <p><strong>Price:</strong> ₱{{ book.price }}</p>
+        <p><strong>Status:</strong> {{ book.status }} ({{ book.quantityStock }})</p>
+        <p><strong>Description:</strong> {{ book.description }}</p>
+    </div>
+</div>
