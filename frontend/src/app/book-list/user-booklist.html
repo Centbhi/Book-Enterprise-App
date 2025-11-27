@@ -11,14 +11,15 @@
 </ul>
 
 @if (selectedBook) {
-  
-  <div class="popup-backdrop" #popupRef>
-    <div class="popup">
-      <app-book-card [book]="selectedBook">
-      </app-book-card>
-
-      <button (click)="closePopup()">Cancel</button>
-      <button (click)="closePopup()">Confirm</button>
+  <div class="popup-backdrop" (click)="closePopup()">
+    <div class="popup" #popupRef (click)="$event.stopPropagation()">
+      <app-popup-card [book]="selectedBook"></app-popup-card>
+      
+      <div class="popup-actions">
+        <button (click)="closePopup()">Cancel</button>
+        <button (click)="confirmAction()">Confirm Purchase</button>
+      </div>
     </div>
   </div>
 }
+
