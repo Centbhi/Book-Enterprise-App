@@ -54,8 +54,8 @@ export class UserApi {
     return this.http.get<User>(`${this.baseUrl}/${name}`);
   }
 
-  getUserById(id: string): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/${name}`);
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/${id}`);
   }
 
   createUser(user: User): Observable<User> {
