@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Book } from './book-api';
@@ -24,7 +24,20 @@ export interface Order{
 })
 
 export class GenreService{
-  genres = ['ROMANCE','FANTASY','DRAMA']
+  private readonly baseUrl = "/api/order"
+
+  constructor(private readonly http: HttpClient) {
+    this.getStatusList().subscribe(list =>{
+      this.genres = list;
+    })
+  }
+  genres : string[] = []
+
+  getStatusList(): Observable<string[]>{
+    return this.http.get<string[]>(`${this.baseUrl}/status/list`);
+  }
+
+
 }
 
 @Injectable({
@@ -63,8 +76,5 @@ export class OrderApi {
     return this.http.get<Order[]>(`${this.baseUrl}/status/${status}`);
   }
 
-  getStatusList(): Observable<string[]>{
-    return this.http.get<string[]>(`${this.baseUrl}/status/list`);
-  }
   
 }
