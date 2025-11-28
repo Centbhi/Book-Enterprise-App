@@ -6,6 +6,7 @@
       <div class="divider"></div>
     </div>
     @for (order of orders; track order.id) {
+      <div class="order">
         <div class="order-info">
           <p><strong>Order ID: </strong> {{order.id}}</p>
           <p><strong>Ordered on: </strong>{{ order.orderDate | date:'MMM d, y • hh:mm a' }} </p>
@@ -17,24 +18,23 @@
         </div>
 
         <div class="order-items">
-          <h3 class="items-title">Items in Order</h3>
-          
+          <h3 class="items-title">Books in Order</h3>
           <ul class="items-list">
             <li class="order-item">
             @for (item of order.orders; track $index) {
               <div class="item-image">
-                <img [src]= "'assets/bookCovers/'+item.book.coverImgUrl" alt="book"/>
+                <img [src]= "'assets/bookCovers/'+item.book?.coverImgUrl" alt="book"/>
               </div>
               
               <div class="item-details">
-                <h4 class="item-title">{{item.book.title}}</h4>
-                <p class="item-author">by {{item.book.author}}</p>
-                <p class="item-price">₱{{item.book.price}} x {{item.quantity}}</p>
+                <h4 class="item-title">{{item.book?.title}}</h4>
+                <p class="item-author">by {{item.book?.author}}</p>
+                <p class="item-price">₱{{item.book?.price}} x {{item.quantity}}</p>
               </div>
               
               <div class="item-total">
                 <p class="total-label">Subtotal</p>
-                <p class="total-amount">₱{{item.book.price * item.quantity}}</p>
+                <p class="total-amount">₱{{(item.book?.price || 0)* item.quantity}}</p>
               </div>
             }
             </li>
@@ -53,6 +53,7 @@
             Cancel Order
           </button>
         </div>
+      </div>
     }
   </div>
 </div>

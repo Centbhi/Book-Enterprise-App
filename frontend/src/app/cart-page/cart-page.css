@@ -213,13 +213,20 @@
   position: relative;
   display: flex;
   gap: 1rem;
-  margin-top: 2rem;
   flex-wrap: wrap;
 }
 
 .checkout-actions button {
   flex: 1;
   min-width: 200px;
+}
+
+.order{
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: rgba(50, 20, 78, 0.3);
+  border:5px outset #ffde7d ;
+  margin-bottom: 3rem;
 }
 
 .btn-primary {
