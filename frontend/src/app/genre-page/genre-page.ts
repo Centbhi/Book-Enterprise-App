@@ -13,11 +13,14 @@ export class GenrePage implements OnInit{
   books:Book[] =[]
   constructor (private readonly bookApi:BookApi, public genreService:GenreService) {}
 
+  selectedGenre:string = "ROMANCE"
+
   ngOnInit(): void {
-    this.findBook("ROMANCE")
+    this.findBook(this.selectedGenre)
   }
 
   findBook(genre:string): void{
+    this.selectedGenre = genre;
     this.bookApi.getByGenre(genre).subscribe({
       next: (data) => {this.books = data;},
       error: (err) => console.error('API Error', err)

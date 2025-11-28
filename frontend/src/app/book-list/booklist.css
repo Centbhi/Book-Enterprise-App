@@ -12,12 +12,8 @@
 }
 
 .book-actions button {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: clamp(0.875rem, 2vw, 1.2rem);
-  letter-spacing: 0.5px;
   background-color: #ffde7d;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 20px;
 }
 
 #createBook {

@@ -6,7 +6,11 @@
     Explore our curated collection of tales that warm the heart and ignites the mind.">
     <div class="actions">
         @for(genre of genreService.genres; track genre){
-            <button (click)="findBook(genre)">{{genre}}</button>
+            <button 
+                (click)="findBook(genre)"
+                [class.active]="selectedGenre === genre">
+                {{genre}}
+            </button>
         }
     </div>
 
