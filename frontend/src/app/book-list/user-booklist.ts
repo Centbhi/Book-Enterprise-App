@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, ViewChild} from '@angular/core';
 import { Book, BookApi } from '../api/book-api';
 import { BookCard } from '../book-card/book-card'
 import { PopupCard } from "../book-card/popup-card";
-import { GenreService, Order, OrderApi } from '../api/order-api';
+import { Order, OrderApi } from '../api/order-api';
 import { UserApi } from '../api/user-api';
 
 @Component({
@@ -30,7 +30,6 @@ export class UserBookList{
     private readonly orderApi:OrderApi,
     private readonly userApi:UserApi, 
     private readonly bookApi:BookApi, 
-    private readonly genreService:GenreService
   ){}
 
   selectedBook: Book | null = null

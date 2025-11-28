@@ -23,7 +23,7 @@ export interface Order{
   providedIn: 'root'
 })
 
-export class GenreService{
+export class OrderStatusService{
   private readonly baseUrl = "/api/order"
 
   constructor(private readonly http: HttpClient) {
