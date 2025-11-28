@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Book } from './book-api';
 
-interface OrderItem{
-  book: Book,
-  quantity : number
+export interface OrderItem{
+  book: Book|null,
+  quantity: number
 }
 
 export interface Order{

@@ -16,6 +16,9 @@
       <app-popup-card [book]="selectedBook"></app-popup-card>
       
       <div class="popup-actions">
+          <input type="number" [(ngModel)]="orderItem.quantity" min="1" [max]="selectedBook.quantityStock"
+          (input)="orderItem.quantity = validateNum(orderItem.quantity,1,selectedBook.quantityStock)" />
+
         <button (click)="closePopup()">Cancel</button>
         <button (click)="confirmAction()">Confirm Purchase</button>
       </div>
