@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { UserApi } from '../api/user-api';
-import { Router } from '@angular/router';
 import { AdminBookList } from "../book-list/admin-booklist";
 import { UserBookList } from "../book-list/user-booklist";
 import { Book } from '../api/book-api';
@@ -16,7 +15,7 @@ export class BooklistLayout {
   @Input() sectionText= '';
   @Input() books: Book[] = []
 
-  constructor (private readonly userApi:UserApi,private readonly router:Router) {}
+  constructor (private readonly userApi:UserApi) {}
 
   get user(){
     return this.userApi.getCurrUser();
