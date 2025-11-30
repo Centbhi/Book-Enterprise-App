@@ -1,9 +1,6 @@
 <app--list-container
     [books]="books"
-    sectionTitle = "Romance"
-    sectionText = "Welcome to The Evening Pages, where every story unfolds like the gentle transition from day to night. 
-    Here, narratives breathe with life, characters dance in the amber light, and imagination knows no bounds. 
-    Explore our curated collection of tales that warm the heart and ignites the mind.">
+    sectionTitle = {{selectedGenre}}>
     <div class="actions">
         @for(genre of genreService.genres; track genre){
             <button 
