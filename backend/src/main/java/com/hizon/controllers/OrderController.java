@@ -16,8 +16,8 @@ public class OrderController extends GenericController<OrderDTO>{
         this.service = service;
     }
 
-    @GetMapping("/user/{userId}")
-    public List<OrderDTO> getByUser(@PathVariable Integer userId) {
+    @GetMapping("/user/{id}")
+    public List<OrderDTO> getByUser(@PathVariable("id") Integer userId) {
         return service.findByUser(userId);
     }
 
