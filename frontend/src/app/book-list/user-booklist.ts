@@ -62,9 +62,13 @@ export class UserBookList{
   confirmAction() {
     if(this.popupAction === "buy" && this.selectedBook){
       this.selectedBook.quantityStock = this.selectedBook.quantityStock - this.orderItem.quantity
-      this.bookApi.updateBook(this.selectedBook.id!,this.selectedBook);
-      this.orderItem.book = this.selectedBook;
-      this.order.status = "PROCESSING"
+      this.bookApi.updateBook(this.selectedBook.id!,this.selectedBook).subscribe({
+        next: updatedBook => {
+          this.orderItem.book = updatedBook;
+          this.order.status = "PROCESSING"
+        },
+        error: err => console.error("Update failed", err)
+      })
     }
     if(this.isInit){
       this.orderApi.updateOrder(this.order.id, this.order).subscribe({
