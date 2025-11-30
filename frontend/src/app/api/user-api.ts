@@ -31,9 +31,14 @@ export class UserApi {
       const userJson = localStorage.getItem('currUser');
       if (userJson) this.currUser = JSON.parse(userJson);
       else this.currUser = null;
-
     }
     return this.currUser;
+  }
+
+  getCurrUserSafe(): User{
+    const user = this.getCurrUser();
+    if (!user) throw new Error('User not authenticated');
+    return user;
   }
 
   setCurrUser(user: User): void {
